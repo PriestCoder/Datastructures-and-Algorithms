@@ -11,13 +11,6 @@ public:
     Node *next;
 
 public:
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-public:
     Node(int data1)
     {
         data = data1;
@@ -38,35 +31,44 @@ Node *ConvertArr2LL(vector<int> &arr)
     return head;
 }
 
-int LengthofLL(Node *head)
+Node *deleteK(Node *head, int k)
 {
-    int cnt = 0;
-    Node *temp = head;
+    if (head == nullptr)
+        return head;
 
-    while (temp)
+    if (k == 1)
+    {
+        Node *temp = head;
+        head = head->next;
+        free(temp);
+        return head;
+    }
+
+    int cnt = 0;
+
+    Node *temp = head;
+    Node *prev = NULL;
+    while (temp != NULL)
     {
         cnt++;
+        if (cnt == k)
+        {
+            prev->next = prev->next->next;
+            break;
+        }
+        prev = temp;
         temp = temp->next;
     }
 
-    return cnt;
-}
-
-Node*  removeHead(Node *head)
-{   
-    if(head==nullptr) return head ;
-    Node *temp = head;
-    head = head->next;
-    delete (temp);
     return head;
 }
 
 int main()
 {
-    vector<int> vec = {1, 2, 3, 4};
-    Node *head = ConvertArr2LL(vec);
-    head = removeHead(head);
+    vector<int> vec = {1, 2, 3, 4, 5, 6};
 
+    Node *head = ConvertArr2LL(vec);
+    head = deleteK(head, 3);
     Node *temp = head;
 
     while (temp)
@@ -74,6 +76,4 @@ int main()
         cout << temp->data << " ";
         temp = temp->next;
     }
-
-    // cout << LengthofLL(head) ;
 }

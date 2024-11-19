@@ -11,17 +11,16 @@ public:
     Node *next;
 
 public:
-    Node(int data1, Node *next1)
-    {
-        data = data1;
-        next = next1;
-    }
-
-public:
     Node(int data1)
     {
         data = data1;
         next = nullptr;
+    }
+
+    Node(int data1, Node *next1)
+    {
+        data = data1;
+        next = next1;
     }
 };
 
@@ -38,34 +37,30 @@ Node *ConvertArr2LL(vector<int> &arr)
     return head;
 }
 
-int LengthofLL(Node *head)
+Node *InsertTail(Node *head, int val)
 {
-    int cnt = 0;
+    if (head == NULL)
+    {
+        return new Node(val);
+    }
+
     Node *temp = head;
 
-    while (temp)
+    while (temp->next != NULL)
     {
-        cnt++;
         temp = temp->next;
     }
 
-    return cnt;
-}
-
-Node*  removeHead(Node *head)
-{   
-    if(head==nullptr) return head ;
-    Node *temp = head;
-    head = head->next;
-    delete (temp);
+    Node *newNode = new Node(val);
+    temp->next = newNode;
     return head;
 }
-
 int main()
 {
-    vector<int> vec = {1, 2, 3, 4};
+    vector<int> vec = {1, 2, 3, 4, 5};
     Node *head = ConvertArr2LL(vec);
-    head = removeHead(head);
+    head = InsertTail(head, 5);
+    // head = new Node(100, head);
 
     Node *temp = head;
 
@@ -74,6 +69,4 @@ int main()
         cout << temp->data << " ";
         temp = temp->next;
     }
-
-    // cout << LengthofLL(head) ;
 }

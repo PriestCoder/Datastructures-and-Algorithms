@@ -25,58 +25,54 @@ public:
     }
 };
 
-Node* ConvertArr2LL(vector<int> &arr)
+Node *ConvertArr2LL(vector<int> &arr)
 {
-    Node* head = new Node(arr[0]) ;
-    Node* mover = head ;
-    for(int i=1;i<arr.size();i++)
+    Node *head = new Node(arr[0]);
+    Node *mover = head;
+    for (int i = 1; i < arr.size(); i++)
     {
-        Node* temp = new Node(arr[i]);
-        mover->next = temp ;
-        mover = temp ;
+        Node *temp = new Node(arr[i]);
+        mover->next = temp;
+        mover = temp;
     }
-    return head ;
+    return head;
 }
 
-int LengthofLL(Node* head)
+int LengthofLL(Node *head)
 {
-    int cnt=0 ;
-    Node* temp = head ;
+    int cnt = 0;
+    Node *temp = head;
 
-    while(temp)
+    while (temp)
     {
-       cnt++ ;
-        temp = temp->next ;
+        cnt++;
+        temp = temp->next;
     }
 
-    return cnt ;
+    return cnt;
 }
 
-int Elefond(Node* head , int item)
+int Elefond(Node *head, int item)
 {
-    Node* temp = head ;
+    Node *temp = head;
 
-    while(temp)
-    {   
-        if(temp->data==item)
+    while (temp)
+    {
+        if (temp->data == item)
         {
-            return 1 ;
+            return 1;
         }
-        temp = temp->next ;
+        temp = temp->next;
     }
 
-    return 0 ;
+    return 0;
 }
 
 int main()
 {
     vector<int> vec = {1, 2, 3, 4};
-    Node* head = ConvertArr2LL(vec); 
-   // Node* temp = head ;
+    Node *head = ConvertArr2LL(vec);
+    // Node* temp = head ;
 
-   cout << Elefond(head,12) ;
-
-   
-
-  
+    cout << Elefond(head, 12);
 }

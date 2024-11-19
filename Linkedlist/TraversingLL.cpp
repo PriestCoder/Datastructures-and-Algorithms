@@ -56,14 +56,15 @@ int main()
 {
     vector<int> vec = {1, 2, 3, 4};
     Node* head = ConvertArr2LL(vec); 
+    
     Node* temp = head ;
 
-   /* while(temp)
+    while(temp)
     {
         cout << temp->data << " " ;
         temp = temp->next ;
     }
-    */
+   
 
-   cout << LengthofLL(head) ;
+  // cout << LengthofLL(head) ;
 }
