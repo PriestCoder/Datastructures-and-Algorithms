@@ -1,3 +1,5 @@
+//for  disconnected graphs 
+
 #include <iostream>
 #include <vector>
 #include <queue>
